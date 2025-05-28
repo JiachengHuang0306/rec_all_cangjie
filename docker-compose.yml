@@ -1,0 +1,131 @@
+version: '3.4'
+
+name: rec-all-cangjie
+
+services:
+
+  recall-seq:
+    image: "swr.cn-north-4.myhuaweicloud.com/swr-devadv/seq:latest"
+    environment:
+      - ACCEPT_EULA=Y
+    networks:
+      - rec-all-cangjie-network
+    ports:
+      - "35340:80"
+
+  recall-sqldata:
+    image: "swr.cn-north-4.myhuaweicloud.com/swr-devadv/mysql:8.0"
+    environment:
+      - MYSQL_ROOT_PASSWORD=Pass@word
+    volumes:
+      - recall-sqldata:/var/lib/mysql
+      - ./src/contrib/text_list_api/db/010_create_textlistdb.sql:/docker-entrypoint-initdb.d/010_create_textlistdb.sql
+      - ./src/core/list/list_api/db/020_create_listdb.sql:/docker-entrypoint-initdb.d/020_create_listdb.sql
+    networks:
+      - rec-all-cangjie-network
+    ports:
+      - "35206:3306"
+
+  recall-rabbitmq:
+    image: "swr.cn-north-4.myhuaweicloud.com/swr-devadv/rabbitmq:3-management-alpine"
+    networks:
+      - rec-all-cangjie-network
+    ports:
+      - "35672:5672"
+      - "35673:15672"
+    volumes:
+      - recall-rabbitmq-data:/var/lib/rabbitmq/
+      - recall-rabbitmq-log:/var/log/rabbitmq/
+
+  recall-envoygateway:
+    image: "swr.cn-north-4.myhuaweicloud.com/swr-devadv/envoy:v1.11.1"
+    volumes:
+      - ./infrastructure/envoy.yaml:/etc/envoy/envoy.yaml
+    networks:
+      - rec-all-cangjie-network
+    ports:
+      - "35191:80"
+      - "35181:8001"
+
+  recall-envoygateway-dapr:
+    image: "swr.cn-north-4.myhuaweicloud.com/swr-devadv/dapr:1.14.4"
+    network_mode: "service:recall-envoygateway"
+    depends_on:
+      - recall-envoygateway
+    command: [ "./daprd",
+               "-app-id", "recall-envoygateway",
+               "-app-port", "80",
+               "-components-path", "/components"
+    ]
+    volumes:
+      - "./dapr/components/:/components"
+    restart: always
+
+  recall-textlistapi:
+    image: recall-textlistapi
+    build:
+      context: .
+      dockerfile: src/contrib/text_list_api/Dockerfile
+    networks:
+      - rec-all-cangjie-network
+    ports:
+      - "35210:8080"
+      - "50001"
+
+
+  recall-textlistapi-dapr:
+    image: "swr.cn-north-4.myhuaweicloud.com/swr-devadv/dapr:1.14.4"
+    network_mode: "service:recall-textlistapi"
+    depends_on:
+      - recall-textlistapi
+    command: [ "./daprd",
+               "-app-id", "recall-textlistapi",
+               "-app-port", "8080",
+               "-components-path", "/components",
+               "-config", "/configuration/recall-configuration.yaml" ]
+    volumes:
+      - "./dapr/components/:/components"
+      - "./dapr/configuration/:/configuration"
+    restart: always
+
+  recall-listapi:
+    image: recall-listapi
+    build:
+      context: .
+      dockerfile: src/core/list/list_api/Dockerfile
+    networks:
+      - rec-all-cangjie-network
+    ports:
+      - "35220:8080"
+      - "50001"
+
+  recall-listapi-dapr:
+    image: "swr.cn-north-4.myhuaweicloud.com/swr-devadv/dapr:1.14.4"
+    network_mode: "service:recall-listapi"
+    depends_on:
+      - recall-listapi
+    command: [ "./daprd",
+               "-app-id", "recall-listapi",
+               "-app-port", "8080",
+               "-components-path", "/components",
+               "-config", "/configuration/recall-configuration.yaml" ]
+    volumes:
+      - "./dapr/components/:/components"
+      - "./dapr/configuration/:/configuration"
+    restart: always
+
+networks:
+  rec-all-cangjie-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.16.0/24
+
+volumes:
+  recall-sqldata:
+    external: false
+  recall-rabbitmq-data:
+    external: false
+  recall-rabbitmq-log:
+    external: false

@@ -1,0 +1,33 @@
+[dependencies]
+  list_domain = { path = "../list_domain" }
+  list_infrastructure = { path = "../list_infrastructure" }
+  event_bus = { path = "../../../shared/event_bus" }
+  tea = { git = "https://gitcode.com/yishengTH/tea.git", branch = "cj-0.53.13" }
+  naiveteaset = { git = "https://gitcode.com/zhangyin_gitcode/naiveteaset.git", branch = "master" }
+  naiveioc = { git = "https://gitcode.com/zhangyin_gitcode/naiveioc.git", branch = "master" }
+  naivemediator = { git = "https://gitcode.com/zhangyin_gitcode/naivemediator.git", branch = "master" }
+  naivevalidation = { git = "https://gitcode.com/zhangyin_gitcode/naivevalidation.git", branch = "master" }
+  naivelogger = { git = "https://gitcode.com/zhangyin_gitcode/naivelogger.git", branch = "master" }
+  naivelogger_seq = { git = "https://gitcode.com/zhangyin_gitcode/naivelogger_seq.git", branch = "master" }
+  naiveserviceresult = { git = "https://gitcode.com/zhangyin_gitcode/naiveserviceresult.git" }
+  naivesqlbuilder = { git = "https://gitcode.com/zhangyin_gitcode/naivesqlbuilder.git", branch = "5313" }
+  dapr_cangjie_sdk = { git = "https://gitcode.com/PermissionDog/dapr-cangjie-sdk.git", branch = "cj_0.53.13" }
+  hellohilo = { git = "https://gitcode.com/zhangyin_gitcode/hellohilo.git", branch = "main" }
+  sql_builder = { git = "https://gitcode.com/zhangyin_gitcode/sql_builder.git", branch = "5313" }
+  mysqlclient4cj = { git = "https://gitcode.com/zhangyin_gitcode/mysql-driver.git", branch = "for-cj-0.53.13" }
+  derive_macros = { git = "https://gitcode.com/OpenCangjieCommunity/derive_macros.git", output-type = "static", commitId = "f81e83a7c66de60302ae80d173a761795932d4b0"}
+  cjjson = { git = "https://gitcode.com/Cangjie-TPC/cangjieJSON.git", output-type = "static", commitId = "928610de8ecfdde6be7d805bb6cf3414e0d7ad57"}
+  fakeuuid4cj = { git = "https://gitcode.com/zhangyin_gitcode/fakeuuid4cj.git" }
+  ginger = { git = "https://gitcode.com/Chemxy/ginger.git" }
+
+[package]
+  cjc-version = "0.53.18"
+  compile-option = ""
+  description = "nothing here"
+  link-option = ""
+  name = "list_api"
+  output-type = "executable"
+  src-dir = ""
+  target-dir = ""
+  version = "1.0.0"
+  package-configuration = {}

@@ -1,0 +1,9 @@
+POST http://localhost:35220/item/create
+Content-Type: application/json
+
+{
+    "setId": 2,
+    "contribJson": {
+        "content": "string"
+    }
+}

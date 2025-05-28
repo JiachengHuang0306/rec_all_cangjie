@@ -1,0 +1,7 @@
+POST http://localhost:35220/set/update
+Content-Type: application/json
+
+{
+    "id": "ac6baed4-d599-3826-aec3-f1413855aa60",
+    "name": "updated"
+}

@@ -1,0 +1,7 @@
+POST http://localhost:35220/set/create
+Content-Type: application/json
+
+{
+    "name": "string",
+    "listId": 3
+}

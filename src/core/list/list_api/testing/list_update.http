@@ -1,0 +1,7 @@
+POST http://localhost:35220/list/update
+Content-Type: application/json
+
+{
+    "id": 1,
+    "name": "updated"
+}

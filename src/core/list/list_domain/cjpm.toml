@@ -1,0 +1,14 @@
+[dependencies]
+  naiveseedwork = { git = "https://gitcode.com/zhangyin_gitcode/naiveseedwork.git" }
+
+[package]
+  cjc-version = "0.53.18"
+  compile-option = ""
+  description = "nothing here"
+  link-option = ""
+  name = "list_domain"
+  output-type = "static"
+  src-dir = ""
+  target-dir = ""
+  version = "1.0.0"
+  package-configuration = {}

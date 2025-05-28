@@ -1,0 +1,6 @@
+POST http://localhost:35220/set/delete
+Content-Type: application/json
+
+{
+    "id": "469923c4-f5b0-8a81-ef8c-87356bc579f9"
+}

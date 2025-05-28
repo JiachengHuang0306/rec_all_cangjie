@@ -1,0 +1,5 @@
+POST http://localhost:35210/item/delete
+
+{
+    "id": 108
+}

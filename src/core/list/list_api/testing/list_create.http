@@ -1,0 +1,7 @@
+POST http://localhost:35220/list/create
+Content-Type: application/json
+
+{
+    "name": "string",
+    "typeId": 1
+}

@@ -1,0 +1,21 @@
+[dependencies]
+  list_domain = { path = "../list_domain"}
+  naiveioc = { git = "https://gitcode.com/zhangyin_gitcode/naiveioc.git", branch = "master" }
+  naiveseedwork = { git = "https://gitcode.com/zhangyin_gitcode/naiveseedwork.git" }
+  naivesqlbuilder = { git = "https://gitcode.com/zhangyin_gitcode/naivesqlbuilder.git", branch = "5313" }
+  hellohilo = { git = "https://gitcode.com/zhangyin_gitcode/hellohilo.git", branch = "main" }
+  sql_builder = { git = "https://gitcode.com/zhangyin_gitcode/sql_builder.git", branch = "5313" }
+  fakeuuid4cj = { git = "https://gitcode.com/zhangyin_gitcode/fakeuuid4cj.git" }
+
+
+[package]
+  cjc-version = "0.53.18"
+  compile-option = "--debug-macro"
+  description = "nothing here"
+  link-option = ""
+  name = "list_infrastructure"
+  output-type = "static"
+  src-dir = ""
+  target-dir = ""
+  version = "1.0.0"
+  package-configuration = {}

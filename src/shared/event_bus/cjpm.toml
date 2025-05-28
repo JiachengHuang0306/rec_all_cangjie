@@ -1,0 +1,17 @@
+[dependencies]
+  naiveioc = { git = "https://gitcode.com/zhangyin_gitcode/naiveioc.git", branch = "master" }
+  dapr_cangjie_sdk = { git = "https://gitcode.com/PermissionDog/dapr-cangjie-sdk.git", branch = "cj_0.53.13" }
+  datetime_serialization = { git = "https://gitcode.com/zhangyin_gitcode/datetime_serialization.git" }
+  cjjson = { git = "https://gitcode.com/Cangjie-TPC/cangjieJSON.git", output-type = "static", commitId = "928610de8ecfdde6be7d805bb6cf3414e0d7ad57"}
+
+[package]
+  cjc-version = "0.53.18"
+  compile-option = ""
+  description = "nothing here"
+  link-option = ""
+  name = "event_bus"
+  output-type = "static"
+  src-dir = ""
+  target-dir = ""
+  version = "1.0.0"
+  package-configuration = {}
