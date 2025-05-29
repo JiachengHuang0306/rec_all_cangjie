@@ -11,6 +11,8 @@ public class ContribUrlService <: IContribUrlService {
     public func getContribUrl(listTypeId: Int64): String {
         let route = if (listTypeId == ListType.TextId) {
             "text"
+        } else if (listTypeId == ListType.MaskedTextId) {
+            "masked_text"
         } else {
             throw Exception("unknown list type id")
         }

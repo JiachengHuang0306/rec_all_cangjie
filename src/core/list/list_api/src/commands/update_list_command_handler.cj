@@ -20,7 +20,7 @@ public class UpdateListCommandHandler <: IRequestHandler<UpdateListCommand, Serv
         private let listRepository: IListRepository,
         private let identityService: IIdentityService
     ) {}
-
+ 
     public func handle(request: UpdateListCommand): ServiceResult {
         let list = match (listRepository.get(request.id)) {
             case Some(v) => v

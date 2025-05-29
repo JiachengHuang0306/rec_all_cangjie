@@ -49,4 +49,4 @@ public class IntegrationEventLogEntity {
         contentJson = integrationEvent.toJson()
         this.transactionUuid = transactionUuid
     }
-}
+} 

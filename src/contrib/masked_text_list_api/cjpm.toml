@@ -1,0 +1,29 @@
+[dependencies]
+  naiveioc = { git = "https://gitcode.com/zhangyin_gitcode/naiveioc.git", branch = "master" }
+  naivemediator = { git = "https://gitcode.com/zhangyin_gitcode/naivemediator.git", branch = "master" }
+  naivesqlbuilder = { git = "https://gitcode.com/zhangyin_gitcode/naivesqlbuilder.git", branch = "5313" }
+  naiveserviceresult = { git = "https://gitcode.com/zhangyin_gitcode/naiveserviceresult.git" }
+  naivelogger = { git = "https://gitcode.com/zhangyin_gitcode/naivelogger.git", branch = "master" }
+  naivelogger_seq = { git = "https://gitcode.com/zhangyin_gitcode/naivelogger_seq.git", branch = "master" }
+  naiveteaset = { git = "https://gitcode.com/zhangyin_gitcode/naiveteaset.git", branch = "master" }
+  tea = { git = "https://gitcode.com/yishengTH/tea.git", branch = "cj-0.53.13" }
+  dapr_cangjie_sdk = { git = "https://gitcode.com/PermissionDog/dapr-cangjie-sdk.git", branch = "cj_0.53.13" }
+  dapr_tea = { git = "https://gitcode.com/PermissionDog/dapr_tea.git", branch = "cj-0.53.13" }
+  mysqlclient4cj = { git = "https://gitcode.com/zhangyin_gitcode/mysql-driver.git", branch = "for-cj-0.53.13" }
+  cjjson = { git = "https://gitcode.com/Cangjie-TPC/cangjieJSON.git", output-type = "static", commitId = "928610de8ecfdde6be7d805bb6cf3414e0d7ad57"}
+  derive_macros = { git = "https://gitcode.com/OpenCangjieCommunity/derive_macros.git", output-type = "static",commitId = "f81e83a7c66de60302ae80d173a761795932d4b0"}
+  naivevalidation = { git = "https://gitcode.com/zhangyin_gitcode/naivevalidation.git", branch = "master" }
+  fakeuuid4cj = { git = "https://gitcode.com/zhangyin_gitcode/fakeuuid4cj.git" }
+  event_bus = { path = "../../shared/event_bus/" }
+  
+[package]
+  cjc-version = "0.53.18"
+  compile-option = "--debug-macro"
+  description = "nothing here"
+  link-option = ""
+  name = "masked_text_list_api"
+  output-type = "executable"
+  src-dir = ""
+  target-dir = ""
+  version = "1.0.0"
+  package-configuration = {}

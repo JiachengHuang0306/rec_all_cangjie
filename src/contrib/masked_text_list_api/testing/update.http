@@ -1,0 +1,7 @@
+POST http://localhost:35220/item/update
+
+{
+    "id": 1,
+    "content": "hello kitty",
+    "maskedContent": "masked kitty"
+}

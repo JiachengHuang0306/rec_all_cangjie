@@ -1,0 +1,6 @@
+POST http://localhost:35230/item/create
+
+{
+    "content": "hello post",
+    "maskedContent": "masked hello"
+}

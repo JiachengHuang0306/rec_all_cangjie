@@ -25,22 +25,23 @@ public class SetQueryService <: ISetQueryService {
         private let connectionProvider: IDatabaseConnectionProvider
     ) {}
 
-    public func list(listId: Int64, skip: Int64, take: Int64): TypedServiceResult<Array<SetViewModel>> {
-        let (sql, params) = @NSSelectFrom(RecAllSetEntity)(Dialect.MYSQL, {_ => []}).setWhere {p => p.__listId == listId}.
-            and {p => p.__userIdentityGuid == identityService.getUserIdentityGuid()}.and {p => p.__isDeleted == false}.
-            setLimit(take, skip).toSQLWithParams()
+    public func list(ListId: Int64, skip: Int64, take: Int64): TypedServiceResult<Array<SetViewModel>> {
+        let (sql, params) = @NSSelectFrom(RecAllSetEntity)(Dialect.MYSQL, {_ => []}).setWhere {
+            p => p.__userIdentityGuid == identityService.getUserIdentityGuid()
+        }.and({p => p.__isDeleted == false}).setLimit(take, skip).toSQLWithParams()
 
         try (connection = connectionProvider.getConnection()) {
             let statement = connection.prepareStatement(sql)
             let queryResult = statement.query(params)
-            return TypedServiceResult<Array<SetViewModel>>.success(@NSMapTo[SetViewModel](queryResult) |> collectArray)
+            return TypedServiceResult<Array<SetViewModel>>.success(@NSMapTo[SetViewModel](queryResult) |> collectArray
+            )
         }
 
         throw Exception("this should not happen")
     }
 
     public func get(id: Int64): TypedServiceResult<SetViewModel> {
-        let (sql, params) = @NSSelectFrom(RecAllSetEntity)(Dialect.MYSQL, {_ => []}).setWhere {p => p.__id == id}.and {
+        let (sql, params) = @NSSelectFrom(RecAllSetEntity){_ => []}.setWhere {p => p.__id == id}.and {
             p => p.__userIdentityGuid == identityService.getUserIdentityGuid()
         }.and {p => p.__isDeleted == false}.toSQLWithParams()
 

@@ -1,4 +1,4 @@
-package list_api.commands
+package masked_text_list_api.commands
 
 import serialization.serialization.*
 
@@ -14,9 +14,11 @@ import cjjson.macros.*
 import derive_macros.*
 import derive_macros.macros.*
 
-@NMIRequest[@ sourcePackage(), ServiceResult]
+@NMIRequest[@sourcePackage(), ServiceResult]
 @JsonAdapter
 @Derive[HashEqual]
-public class DeleteListCommand {
+public class UpdateMaskedTextItemCommand {
     public var id: Int64 = 0
+    public var content: String = ""
+    public var maskedContent: String = ""
 }
